@@ -52,4 +52,30 @@ const loginAdmin = asyncHandler(async (req, res) => {
   });
 });
 
-export { registerAdmin, loginAdmin };
+// @desc Get all admins
+// @route GET /api/v1/admins/
+// @access Private
+const getAdmins = asyncHandler(async (req, res) => {
+  const admins = await Admin.find();
+  res.status(201).json({
+    status: "success",
+    data: admins,
+    message: "admin fetched successfully",
+  });
+});
+
+// @desc Get Profile admin
+// @route GET /api/v1/admins/:id
+// @access Private
+const getAdminProfile = asyncHandler(async (req, res) => {
+  const admin = await Admin.findById(req.userAuth._id);
+  if (!admin) {
+    throw new Error("admin not found");
+  }
+  res.status(201).json({
+    status: "success",
+    data: admin,
+    message: "admin profile fetched successfully",
+  });
+});
+export { registerAdmin, loginAdmin, getAdmins, getAdminProfile };
