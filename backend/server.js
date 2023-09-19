@@ -1,7 +1,7 @@
 import express from "express";
 import morgan from "morgan";
 import dotenv from "dotenv";
-import { notFound, errorHandler } from "../middleware/errorMiddleware.js";
+import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
 import connectDB from "./config/db.js";
 
 dotenv.config();
