@@ -78,4 +78,74 @@ const getAdminProfile = asyncHandler(async (req, res) => {
     message: "admin profile fetched successfully",
   });
 });
-export { registerAdmin, loginAdmin, getAdmins, getAdminProfile };
+
+const updateAdmin = asyncHandler(async (req, res) => {
+  const { name, email, password } = req.body;
+
+  const emailExist = await Admin.findOne({ email });
+  if (emailExist) {
+    throw new Error("email already taken");
+  }
+
+  //   check if user update password
+  if (password) {
+    // update password also
+    const admin = await Admin.findByIdAndUpdate(
+      req.userAuth._id,
+      {
+        email,
+        name,
+        password: await hashPassword(password),
+      },
+      {
+        new: true,
+        runValidators: true,
+      }
+    );
+    res.status(201).json({
+      status: "success",
+      data: admin,
+      message: "admin update successfully",
+    });
+  } else {
+    // not update password
+    const admin = await Admin.findByIdAndUpdate(
+      req.userAuth._id,
+      {
+        email,
+        name,
+      },
+      {
+        new: true,
+        runValidators: true,
+      }
+    );
+    res.status(201).json({
+      status: "success",
+      data: admin,
+      message: "admin update sucessfully",
+    });
+  }
+});
+
+const adminSuspendAgent = asyncHandler(async (req, res) => {
+  try {
+    res.status(201).json({
+      status: "success",
+      data: "admin suspended agent",
+    });
+  } catch (error) {
+    res.json({
+      status: "failed",
+      error: error.message,
+    });
+  }
+});
+export {
+  registerAdmin,
+  loginAdmin,
+  getAdmins,
+  getAdminProfile,
+  updateAdmin,
+  adminSuspendAgent,
+};
