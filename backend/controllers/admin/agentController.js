@@ -29,4 +29,23 @@ const registerAgent = asyncHandler(async (req, res) => {
   });
 });
 
-export { registerAgent };
+const loginAgent = asyncHandler(async (req, res) => {
+  const { email, password } = req.body;
+  // check if user exist
+  const agentFound = await Agent.findOne({ email });
+  if (!agentFound) {
+    throw new Error("agent not found");
+  }
+  // verify password
+  const isMatched = await verifyPassword(password, agentFound?.password);
+  if (!isMatched) {
+    throw new Error("invalid login cerendentials");
+  }
+  res.status(201).json({
+    starus: "success",
+    message: "agent login sucessfully",
+    data: generateToken(agentFound?._id),
+  });
+});
+
+export { registerAgent, loginAgent };
