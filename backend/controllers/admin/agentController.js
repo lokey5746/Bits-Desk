@@ -92,4 +92,56 @@ const getAgentProfile = asyncHandler(async (req, res) => {
   });
 });
 
-export { registerAgent, loginAgent, getAllAgentByAdmin, getSingleAgentByAdmin };
+// @desc Agent updating profile
+// @route POST /api/v1/agents/:agentID/update
+// @access Private Agent only
+
+const agentUpdateProfile = asyncHandler(async (req, res) => {
+  const { name, email, password } = req.body;
+  //   check if email taken
+  const agentExist = await Agent.findOne({ email });
+  if (agentExist) {
+    throw new Error("email already taken");
+  }
+
+  //   check if user updating password
+  if (password) {
+    const agent = await Agent.findByIdAndUpdate(
+      req.userAuth._id,
+      {
+        email,
+        password: await hashPassword(password),
+        name,
+      },
+      {
+        new: true,
+        runValidators: true,
+      }
+    );
+    res.status(201).json({
+      status: "success",
+      message: "agent fetch successfully",
+      data: agent,
+    });
+  } else {
+    // update agent without password
+    const agent = await Agent.findByIdAndUpdate(
+      req.userAuth._id,
+      { email, name },
+      { new: true, runValidators: true }
+    );
+    res.status(201).json({
+      status: "sucess",
+      message: "agent fetch sucessfully",
+      data: agent,
+    });
+  }
+});
+
+export {
+  registerAgent,
+  loginAgent,
+  getAllAgentByAdmin,
+  getSingleAgentByAdmin,
+  getAgentProfile,
+};
