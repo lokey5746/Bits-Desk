@@ -17,6 +17,15 @@ const agentSchema = new mongoose.Schema({
     type: String,
     default: "agent",
   },
+  applicationStatus: {
+    type: String,
+    enum: ["pending", "approved", "rejected"],
+    default: "pending",
+  },
+  isSuspended: {
+    type: Boolean,
+    default: false,
+  },
   tickets: [
     {
       type: mongoose.Schema.Types.ObjectId,
