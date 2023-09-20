@@ -42,10 +42,38 @@ const loginAgent = asyncHandler(async (req, res) => {
     throw new Error("invalid login cerendentials");
   }
   res.status(201).json({
-    starus: "success",
+    status: "success",
     message: "agent login sucessfully",
     data: generateToken(agentFound?._id),
   });
 });
 
-export { registerAgent, loginAgent };
+// @desc Get all Agents
+// @route POST /api/v1/agents/admin
+// @access Private
+
+const getAllAgentByAdmin = asyncHandler(async (req, res) => {
+  const agents = await Agent.find();
+  res.status(201).json({
+    status: "success",
+    message: "all agents fetch sucessfully",
+    data: agents,
+  });
+});
+
+// @desc Get single Agent
+// @route POST /api/v1/agents/:agentID/admin
+// @access Private
+
+const getSingleAgentByAdmin = asyncHandler(async (req, res) => {
+  const agent = await Agent.findById(req.params.id);
+  if (!agent) {
+    throw new Error("agent not found");
+  }
+  res.status(201).json({
+    status: "success",
+    message: "agent fetch successfully",
+  });
+});
+
+export { registerAgent, loginAgent, getAllAgentByAdmin, getSingleAgentByAdmin };
