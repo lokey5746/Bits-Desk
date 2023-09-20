@@ -5,6 +5,7 @@ import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
 import connectDB from "./config/db.js";
 
 import adminRoutes from "./routes/admin/adminRoutes.js";
+import agentRoutes from "./routes/admin/agentRoutes.js";
 
 dotenv.config();
 
@@ -21,6 +22,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/v1/admins", adminRoutes);
+app.use("/api/v1/agents", agentRoutes);
 
 // Middleware
 app.use(notFound);
