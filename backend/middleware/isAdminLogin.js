@@ -1,7 +1,7 @@
 import Admin from "../models/admin/adminModel.js";
 import verifyToken from "../utilis/verifyToken.js";
 
-const protect = async (req, res, next) => {
+const isAdminLogin = async (req, res, next) => {
   // get token
   const headerObj = req.headers;
   // console.log(headerObj);
@@ -22,4 +22,4 @@ const protect = async (req, res, next) => {
   }
 };
 
-export { protect };
+export { isAdminLogin };

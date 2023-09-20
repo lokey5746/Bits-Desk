@@ -138,10 +138,40 @@ const agentUpdateProfile = asyncHandler(async (req, res) => {
   }
 });
 
+// @desc admin Update agent
+// @route POST /api/v1/agents/:agentID/admin
+// @access Private Admin only
+
+const adminUpdateAgnet = asyncHandler(async (req, res) => {
+  const { name, email, tickets } = req.body;
+  // check if agent exist
+  const agentFound = await Agent.findById(req.params.id);
+  if (!agentFound) {
+    throw new Error("agnet not found");
+  }
+  //   check if agent is suspend
+  if (agentFound.isSuspended) {
+    throw new Error("agnet suspended");
+  }
+
+  //   assign a tickets
+  if (tickets) {
+    agentFound.tickets = tickets;
+    await agentFound.save();
+    res.status(201).json({
+      status: "success",
+      data: agentFound,
+      message: "agent update successfully",
+    });
+  }
+});
+
 export {
   registerAgent,
   loginAgent,
   getAllAgentByAdmin,
   getSingleAgentByAdmin,
   getAgentProfile,
+  agentUpdateProfile,
+  adminUpdateAgnet,
 };
