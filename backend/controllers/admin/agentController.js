@@ -76,4 +76,20 @@ const getSingleAgentByAdmin = asyncHandler(async (req, res) => {
   });
 });
 
+// @desc Agent Profile
+// @route POST /api/v1/agents/profile
+// @access Private Agent only
+
+const getAgentProfile = asyncHandler(async (req, res) => {
+  const agent = await Agent.findById(req.userAuth?._id);
+  if (!agent) {
+    throw new Error("agent not found");
+  }
+  res.status(201).json({
+    status: "success",
+    message: "agent fetched successfully",
+    data: agent,
+  });
+});
+
 export { registerAgent, loginAgent, getAllAgentByAdmin, getSingleAgentByAdmin };
