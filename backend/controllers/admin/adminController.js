@@ -1,4 +1,6 @@
 import Admin from "../../models/admin/adminModel.js";
+import Agent from "../../models/admin/agentModel.js";
+import User from "../../models/user/userModel.js";
 import asyncHandler from "express-async-handler";
 
 import generateToken from "../../utilis/generateToken.js";
@@ -79,6 +81,9 @@ const getAdminProfile = asyncHandler(async (req, res) => {
   });
 });
 
+// @desc PUT Update admin
+// @route PUT /api/v1/admins/:id
+// @access Private
 const updateAdmin = asyncHandler(async (req, res) => {
   const { name, email, password } = req.body;
 
@@ -128,6 +133,9 @@ const updateAdmin = asyncHandler(async (req, res) => {
   }
 });
 
+// @desc PUT admin suspend agent
+// @route PUT /api/v1/admins/:id
+// @access Private
 const adminSuspendAgent = asyncHandler(async (req, res) => {
   try {
     res.status(201).json({
@@ -141,6 +149,53 @@ const adminSuspendAgent = asyncHandler(async (req, res) => {
     });
   }
 });
+
+// @desc PUT admin update agent
+// @route PUT /api/v1/admins/:id
+// @access Private
+const adminUpdateAgent = asyncHandler(async (req, res) => {
+  const { name, email, password } = req.body;
+  // check if email is taken or not
+  const agentExist = await Agent.findOne({ email });
+  if (agentExist) {
+    throw new Error("email already taken");
+  }
+  // check if updating password or not
+  if (password) {
+    // updating password also
+    const agent = await Agent.findByIdAndUpdate(
+      req.params.id,
+      {
+        name,
+        email,
+        password: hashPassword(password),
+      },
+      {
+        new: true,
+        runValidators: true,
+      }
+    );
+  } else {
+    // update user without password
+    const agent = await Agent.findByIdAndUpdate(
+      req.params.id,
+      {
+        name,
+        email,
+      },
+      {
+        new: true,
+        runValidators: true,
+      }
+    );
+  }
+});
+
+// @desc PUT admin update user
+// @route PUT /api/v1/admins/:id
+// @access Private
+const adminUpdateUser = asyncHandler(async (req, res) => {});
+
 export {
   registerAdmin,
   loginAdmin,
