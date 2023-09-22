@@ -194,7 +194,45 @@ const adminUpdateAgent = asyncHandler(async (req, res) => {
 // @desc PUT admin update user
 // @route PUT /api/v1/admins/:id
 // @access Private
-const adminUpdateUser = asyncHandler(async (req, res) => {});
+const adminUpdateUser = asyncHandler(async (req, res) => {
+  const { name, email, password } = req.body;
+  // check if email taken
+  const userExist = await User.findOne({ email });
+  if (userExist) {
+    throw new Error("email already taken");
+  }
+  // check if updating password or not
+  if (password) {
+    const user = await User.findByIdAndUpdate(
+      req.params.id,
+      {
+        name,
+        email,
+        password: await hashPassword(password),
+      },
+      {
+        new: true,
+        runValidators: true,
+      }
+    );
+    res.status(201).json({
+      status: "success",
+      message: "user update sucessfully",
+      data: user,
+    });
+  } else {
+    const user = await User.findByIdAndUpdate(
+      req.params.id,
+      { name, email },
+      { new: true, runValidators: true }
+    );
+    res.status(201).json({
+      status: "success",
+      message: "user update successfully",
+      data: user,
+    });
+  }
+});
 
 export {
   registerAdmin,
@@ -203,4 +241,5 @@ export {
   getAdminProfile,
   updateAdmin,
   adminSuspendAgent,
+  adminUpdateAgent,
 };
