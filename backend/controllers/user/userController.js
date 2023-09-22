@@ -64,4 +64,51 @@ const getUserProfile = asyncHandler(async (req, res) => {
   });
 });
 
-export { registerUser, loginUser, getUserProfile };
+const userUpdateProfile = asyncHandler(async (req, res) => {
+  const { name, email, password } = req.body;
+  // if email is taken
+  const userExist = await User.findOne({ email });
+  if (userExist) {
+    throw new Error("email already exist");
+  }
+  // check if user updating password or not
+  if (password) {
+    const user = await User.findByIdAndUpdate(
+      req.userAuth._id,
+      {
+        name,
+        email,
+        password: await hashPassword(password),
+      },
+      {
+        new: true,
+        runValidators: true,
+      }
+    );
+    res.status(201).json({
+      status: "success",
+      message: "user update successfully",
+      data: user,
+    });
+  } else {
+    // update
+    const user = await User.findByIdAndUpdate(
+      req.userAuth._id,
+      {
+        email,
+        name,
+      },
+      {
+        new: true,
+        runValidators: true,
+      }
+    );
+    res.status(201).json({
+      status: "success",
+      message: "user update sucessfully",
+      data: user,
+    });
+  }
+});
+
+export { registerUser, loginUser, getUserProfile, userUpdateProfile };
