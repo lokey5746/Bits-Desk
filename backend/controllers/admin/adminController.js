@@ -5,6 +5,7 @@ import asyncHandler from "express-async-handler";
 
 import generateToken from "../../utilis/generateToken.js";
 import { hashPassword, verifyPassword } from "../../utilis/helpers.js";
+import { json } from "express";
 
 // @desc Create  admins
 // @route POST /api/v1/admins/register
@@ -234,6 +235,18 @@ const adminUpdateUser = asyncHandler(async (req, res) => {
   }
 });
 
+const adminDeleteAgent = asyncHandler(async (req, res) => {
+  const agent = await Agent.findById(req.params.id);
+  if (agent) {
+    await agent.remove();
+    res.status(201),
+      json({
+        status: "success",
+        message: "agent delete successfully",
+      });
+  }
+});
+
 export {
   registerAdmin,
   loginAdmin,
@@ -242,4 +255,6 @@ export {
   updateAdmin,
   adminSuspendAgent,
   adminUpdateAgent,
+  adminUpdateUser,
+  adminDeleteAgent,
 };

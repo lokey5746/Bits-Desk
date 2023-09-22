@@ -7,6 +7,8 @@ import {
   updateAdmin,
   adminSuspendAgent,
   adminUpdateAgent,
+  adminUpdateUser,
+  adminDeleteAgent,
 } from "../../controllers/admin/adminController.js";
 
 import { isAdminLogin } from "../../middleware/isAdminLogin.js";
@@ -25,5 +27,8 @@ router
   .route("/suspend/agent/:id")
   .put(isAdminLogin, isAdmin, adminSuspendAgent);
 router.route("/update/agent/:id").put(isAdminLogin, isAdmin, adminUpdateAgent);
-
+router.route("/update/user/:id").put(isAdminLogin, isAdmin, adminUpdateUser);
+router
+  .route("/delete/agent/:id")
+  .delete(isAdminLogin, isAdmin, adminDeleteAgent);
 export default router;
