@@ -6,6 +6,7 @@ import connectDB from "./config/db.js";
 
 import adminRoutes from "./routes/admin/adminRoutes.js";
 import agentRoutes from "./routes/admin/agentRoutes.js";
+import userRoutes from "./routes/user/userRoutes.js";
 
 dotenv.config();
 
@@ -23,6 +24,7 @@ app.get("/", (req, res) => {
 
 app.use("/api/v1/admins", adminRoutes);
 app.use("/api/v1/agents", agentRoutes);
+app.use("/api/v1/users", userRoutes);
 
 // Middleware
 app.use(notFound);
