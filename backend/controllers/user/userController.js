@@ -26,6 +26,10 @@ const registerUser = asyncHandler(async (req, res) => {
   });
 });
 
+// @desc  Login User
+// @route POST /api/v1/users/login
+// @access Public
+
 const loginUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
   // check if user exist
@@ -46,4 +50,18 @@ const loginUser = asyncHandler(async (req, res) => {
   });
 });
 
-export { registerUser, loginUser };
+const getUserProfile = asyncHandler(async (req, res) => {
+  const user = await User.findById(req.userAuth._id).select(
+    "-password -createdAt -updatedAt"
+  );
+  if (!user) {
+    throw new Error("user not found");
+  }
+  res.status(201).json({
+    status: "success",
+    message: "user profile fetched sucessfully",
+    data: user,
+  });
+});
+
+export { registerUser, loginUser, getUserProfile };
