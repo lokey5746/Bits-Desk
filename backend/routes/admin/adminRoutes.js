@@ -9,6 +9,7 @@ import {
   adminUpdateAgent,
   adminUpdateUser,
   adminDeleteAgent,
+  adminDeleteUser,
 } from "../../controllers/admin/adminController.js";
 
 import { isAdminLogin } from "../../middleware/isAdminLogin.js";
@@ -31,4 +32,5 @@ router.route("/update/user/:id").put(isAdminLogin, isAdmin, adminUpdateUser);
 router
   .route("/delete/agent/:id")
   .delete(isAdminLogin, isAdmin, adminDeleteAgent);
+router.route("/delete/user/:id").delete(isAdminLogin, isAdmin, adminDeleteUser);
 export default router;

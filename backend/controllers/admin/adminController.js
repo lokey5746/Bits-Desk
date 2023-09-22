@@ -235,6 +235,9 @@ const adminUpdateUser = asyncHandler(async (req, res) => {
   }
 });
 
+// @desc DELETE admin delete agent
+// @route DELETE /api/v1/admins/:id
+// @access Private
 const adminDeleteAgent = asyncHandler(async (req, res) => {
   const agent = await Agent.findById(req.params.id);
   if (agent) {
@@ -243,6 +246,21 @@ const adminDeleteAgent = asyncHandler(async (req, res) => {
       json({
         status: "success",
         message: "agent delete successfully",
+      });
+  }
+});
+
+// @desc DELETE admin delete agent
+// @route DELETE /api/v1/admins/:id
+// @access Private
+const adminDeleteUser = asyncHandler(async (req, res) => {
+  const user = await User.findById(req.params.id);
+  if (user) {
+    await user.remove();
+    res.status(201),
+      json({
+        status: "success",
+        message: "user delete successfully",
       });
   }
 });
@@ -257,4 +275,5 @@ export {
   adminUpdateAgent,
   adminUpdateUser,
   adminDeleteAgent,
+  adminDeleteUser,
 };
