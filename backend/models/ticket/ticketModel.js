@@ -10,7 +10,10 @@ const ticketSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-
+  severity: {
+    type: String,
+    required: true,
+  },
   agents: [
     {
       type: mongoose.Schema.Types.ObjectId,
