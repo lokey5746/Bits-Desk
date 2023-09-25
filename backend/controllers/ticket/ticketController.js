@@ -21,4 +21,12 @@ const createTicket = asyncHandler(async (req, res) => {
   });
 });
 
-export { createTicket };
+//@desc Get logged in user tickets
+//@route GET /api/tickets/mytickets
+//@access Private
+const getMyTickets = asyncHandler(async (req, res) => {
+  const tickets = await Ticket.find({ users: req.userAuth._id });
+  res.json(tickets);
+});
+
+export { createTicket, getMyTickets };
