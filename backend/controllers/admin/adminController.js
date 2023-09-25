@@ -1,6 +1,7 @@
 import Admin from "../../models/admin/adminModel.js";
 import Agent from "../../models/admin/agentModel.js";
 import User from "../../models/user/userModel.js";
+import Ticket from "../../models/ticket/ticketModel.js";
 import asyncHandler from "express-async-handler";
 
 import generateToken from "../../utilis/generateToken.js";
@@ -90,6 +91,19 @@ const getUsers = asyncHandler(async (req, res) => {
     status: "success",
     data: agents,
     message: "agents fetched successfully",
+  });
+});
+
+// @desc Fetch all tickets
+// @route Get /api/tickets
+//  @access Private
+const getTickets = asyncHandler(async (req, res) => {
+  const tickets = await Ticket.find({});
+
+  res.status(201).json({
+    status: "success",
+    message: "tickets fetch successfully",
+    data: tickets,
   });
 });
 
@@ -314,4 +328,5 @@ export {
   adminDeleteUser,
   getAgents,
   getUsers,
+  getTickets,
 };
