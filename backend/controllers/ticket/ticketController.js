@@ -29,4 +29,21 @@ const getMyTickets = asyncHandler(async (req, res) => {
   res.json(tickets);
 });
 
-export { createTicket, getMyTickets };
+// @desc Fetch all single tickets
+// @route Get /api/tickets/:id
+//  @access Private
+
+const getTicketById = asyncHandler(async (req, res) => {
+  const ticket = await Ticket.findById(req.params.id);
+  if (ticket) {
+    res.json(ticket);
+  } else {
+    res.status(404).json({
+      status: "success",
+      message: "Ticket not found",
+      data: ticket,
+    });
+  }
+});
+
+export { createTicket, getMyTickets, getTicketById };
