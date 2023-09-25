@@ -5,7 +5,7 @@ import {
   loginUser,
   getUserProfile,
   userUpdateProfile,
-} from "../../controllers/user/userController";
+} from "../../controllers/user/userController.js";
 
 import { isUserLogin } from "../../middleware/isUserLogin.js";
 import isUser from "../../middleware/isUser.js";

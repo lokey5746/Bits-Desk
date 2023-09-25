@@ -7,7 +7,6 @@ import {
   getSingleAgentByAdmin,
   getAgentProfile,
   agentUpdateProfile,
-  adminUpdateAgnet,
 } from "../../controllers/admin/agentController.js";
 import { isAdminLogin } from "../../middleware/isAdminLogin.js";
 import isAdmin from "../../middleware/isAdmin.js";

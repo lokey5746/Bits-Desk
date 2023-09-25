@@ -10,6 +10,8 @@ import {
   adminUpdateUser,
   adminDeleteAgent,
   adminDeleteUser,
+  getAgents,
+  getUsers,
 } from "../../controllers/admin/adminController.js";
 
 import { isAdminLogin } from "../../middleware/isAdminLogin.js";
@@ -24,6 +26,8 @@ router
 router.route("/register").post(registerAdmin);
 router.route("/login").post(loginAdmin);
 router.route("/profile").get(isAdminLogin, isAdmin, getAdminProfile);
+router.route("/agent").get(isAdminLogin, isAdmin, getAgents);
+router.route("/user").get(isAdminLogin, isAdmin, getUsers);
 router
   .route("/suspend/agent/:id")
   .put(isAdminLogin, isAdmin, adminSuspendAgent);

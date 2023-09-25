@@ -67,6 +67,32 @@ const getAdmins = asyncHandler(async (req, res) => {
   });
 });
 
+// @desc Get all agents
+// @route GET /api/v1/admins/
+// @access Private
+
+const getAgents = asyncHandler(async (req, res) => {
+  const agents = await Agent.find();
+  res.status(201).json({
+    status: "success",
+    data: agents,
+    message: "agents fetched successfully",
+  });
+});
+
+// @desc Get all users
+// @route GET /api/v1/admins/
+// @access Private
+
+const getUsers = asyncHandler(async (req, res) => {
+  const agents = await Agent.find();
+  res.status(201).json({
+    status: "success",
+    data: agents,
+    message: "agents fetched successfully",
+  });
+});
+
 // @desc Get Profile admin
 // @route GET /api/v1/admins/:id
 // @access Private
@@ -176,6 +202,11 @@ const adminUpdateAgent = asyncHandler(async (req, res) => {
         runValidators: true,
       }
     );
+    res.status(201).json({
+      status: "success",
+      message: "agent update sucessfully",
+      data: agent,
+    });
   } else {
     // update user without password
     const agent = await Agent.findByIdAndUpdate(
@@ -189,6 +220,11 @@ const adminUpdateAgent = asyncHandler(async (req, res) => {
         runValidators: true,
       }
     );
+    res.status(201).json({
+      status: "success",
+      message: "agent update sucessfully",
+      data: agent,
+    });
   }
 });
 
@@ -276,4 +312,6 @@ export {
   adminUpdateUser,
   adminDeleteAgent,
   adminDeleteUser,
+  getAgents,
+  getUsers,
 };
