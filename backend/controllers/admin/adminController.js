@@ -85,7 +85,7 @@ const getAgents = asyncHandler(async (req, res) => {
 // @access Private
 
 const getUsers = asyncHandler(async (req, res) => {
-  const agents = await Agent.find();
+  const agents = await User.find();
   res.status(201).json({
     status: "success",
     data: agents,
