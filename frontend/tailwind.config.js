@@ -9,6 +9,7 @@ export default {
         green: "#5CB85C",
         gray: "#D9D9D9",
         purple: "#3CDBC0",
+        title: "#717171",
       },
     },
     fontSize: {
