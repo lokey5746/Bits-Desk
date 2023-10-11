@@ -1,10 +1,5 @@
 import React from "react";
-import { HiLightBulb } from "react-icons/hi";
-import setting from "../../assets/setting.svg";
-import watch from "../../assets/watch.svg";
-import bulb from "../../assets/bulb.svg";
 import data from "../../handler/cardData";
-import Card from "../../components/Card";
 
 const Dashboard = () => {
   return (
@@ -19,6 +14,21 @@ const Dashboard = () => {
             <h2 className="text-title text-2xl">{item.text}</h2>
           </div>
         ))}
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-12 py-8 px-8">
+        <div className="border-2 border-gray rounded-md space-y-4">
+          <div>
+            <h3 className="text-xl text-title px-3 py-2">Current Status</h3>
+            <hr className="border border-gray" />
+          </div>
+          <div className="px-4 py-3">
+            <div className="bg-purple p-5 rounded "></div>
+            <h3 className="text-blue text-base mt-2 font-medium">
+              More information...
+            </h3>
+          </div>
+        </div>
+        <div className="border-2 border-gray rounded-md p-4"></div>
       </div>
     </section>
   );
