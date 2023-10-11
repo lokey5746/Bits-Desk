@@ -1,6 +1,7 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 import Header from "../../components/Header";
+import Banner from "../banner/Banner";
 
 const DashboardLayout = () => {
   return (
@@ -8,6 +9,7 @@ const DashboardLayout = () => {
       <div>
         <Header />
         <div>
+          <Banner />
           <Outlet />
         </div>
       </div>
