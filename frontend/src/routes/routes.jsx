@@ -9,6 +9,7 @@ import DashboardLayout from "../screen/layout/DashboardLayout";
 import CreateIncident from "../screen/incident/CreateIncident";
 import CreateIdea from "../screen/idea/CreateIdea";
 import Profile from "../screen/user/Profile";
+import Dashboard from "../screen/layout/Dashboard";
 
 const router = createBrowserRouter([
   {
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
         children: [
           {
             index: true,
+            element: <Dashboard />,
+          },
+          {
+            path: "createincident",
             element: <CreateIncident />,
           },
           {
