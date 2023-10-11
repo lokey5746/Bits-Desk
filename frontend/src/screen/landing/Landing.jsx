@@ -6,10 +6,10 @@ import banner from "../../assets/banner.png";
 const Landing = () => {
   return (
     <section className="w-full mx-auto md:max-w-7xl py-5">
-      <div className="flex justify-between">
+      <div className="flex justify-between items-center">
         <img src={logo} alt="" className=" h-14" />
         <div className="">
-          <ul className="text-lg font-bold flex space-x-5">
+          <ul className="text-base font-medium flex space-x-5">
             <li>
               <Link to="/signin">Sign In</Link>
             </li>
