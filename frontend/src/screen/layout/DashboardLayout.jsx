@@ -9,7 +9,7 @@ const DashboardLayout = () => {
       <div>
         <Header />
         <div>
-          <Banner />
+          {/* <Banner /> */}
           <Outlet />
         </div>
       </div>
