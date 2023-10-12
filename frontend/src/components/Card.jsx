@@ -1,5 +1,6 @@
 import React from "react";
-import { HiLightBulb } from "react-icons/hi";
+
+
 
 const Card = () => {
   return (
