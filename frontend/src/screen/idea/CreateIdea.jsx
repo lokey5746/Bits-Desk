@@ -43,7 +43,7 @@ const CreateIdea = () => {
               </label>
               <input
                 type="text"
-                className="px-3 py-2 md:py-3 rounded-md border-2 md:h-20 border-gray outline-none w-full"
+                className="px-3 py-2 md:py-3 rounded-md border-2 border-gray outline-none w-full"
               />
             </div>
             <div className="space-y-2 flex flex-col">
