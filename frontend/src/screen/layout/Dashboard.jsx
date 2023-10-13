@@ -14,8 +14,8 @@ const Dashboard = () => {
               key={item.id}
               className="flex flex-col items-center px-3 py-5 space-y-2 border-2 border-gray rounded-md"
             >
-              <img src={item.image} className="" alt="" />
-              <h2 className="text-title text-2xl">{item.text}</h2>
+              <img src={item.image} className="h-10 md:h-20" alt="" />
+              <h2 className="text-title text-base md:text-2xl">{item.text}</h2>
             </div>
           ))}
         </div>
@@ -27,10 +27,10 @@ const Dashboard = () => {
                 Recent Active Ideas
               </h2>
             </div>
-            <div className="border-2 border-gray rounded-md p-3 rounded-t-none border-t-0">
+            <div className="border-2 border-gray rounded-md md:p-3 rounded-t-none border-t-0">
               <table class=" text-sm h-full w-full rounded-md border-spacing-y-5">
                 <thead>
-                  <tr className="text-base">
+                  <tr className="text-sm md:text-base">
                     <th class="px-3 py-2  text-title  text-left">Number</th>
                     <th class="px-2 py-2  text-title  text-left">State</th>
                     <th class="px-2 py-2  text-title  text-left">Title</th>
@@ -53,10 +53,10 @@ const Dashboard = () => {
                 Recent Active Incidents
               </h2>
             </div>
-            <div className="border-2 border-gray rounded-md p-3 rounded-t-none border-t-0">
+            <div className="border-2 border-gray rounded-md md:p-3 rounded-t-none border-t-0">
               <table class=" text-sm h-full w-full rounded-md border-spacing-y-5">
                 <thead>
-                  <tr className="text-base">
+                  <tr className="text-sm md:text-base">
                     <th class="px-3 py-2  text-title  text-left">Number</th>
                     <th class="px-2 py-2  text-title  text-left">State</th>
                     <th class="px-2 py-2  text-title  text-left">Title</th>
@@ -78,10 +78,10 @@ const Dashboard = () => {
                 Recent Active Requests
               </h2>
             </div>
-            <div className="border-2 border-gray rounded-md p-3 rounded-t-none border-t-0">
+            <div className="border-2 border-gray rounded-md md:p-3 rounded-t-none border-t-0">
               <table class=" text-sm h-full w-full rounded-md border-spacing-y-5">
                 <thead>
-                  <tr className="text-base">
+                  <tr className="text-sm md:text-base">
                     <th class="px-3 py-2  text-title  text-left">Number</th>
                     <th class="px-2 py-2  text-title  text-left">State</th>
                     <th class="px-2 py-2  text-title  text-left">Title</th>

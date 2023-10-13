@@ -3,7 +3,7 @@ import banner from "../../assets/banner3.png";
 
 const Banner = () => {
   return (
-    <section>
+    <section className="hidden md:block">
       <img className="w-full" src={banner} alt="" />
       <div className="absolute box flex flex-col items-center">
         <h2 className="text-white text-3xl font-bold">How Can We Help You?</h2>

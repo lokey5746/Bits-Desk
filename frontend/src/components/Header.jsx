@@ -25,7 +25,7 @@ const Header = () => {
           }`}
         >
           <ul className="text-sm font-medium links space-y-4 md:space-y-0 md:space-x-4">
-            <li className="flex items-center space-x-2">
+            <li className="flex items-center space-x-1 md:space-x-2">
               <RiHome3Fill className="text-lg" />
               <Link onClick={() => setShowLinks(true)} to="/dashboard">
                 HOME

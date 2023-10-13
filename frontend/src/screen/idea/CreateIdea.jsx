@@ -23,7 +23,7 @@ const CreateIdea = () => {
               </label>
               <input
                 type="text"
-                className="px-3 py-2 md:py-3 rounded-md border-2 border-gray outline-none w-full"
+                className="px-3 py-2 md:py-3 rounded-md border border-gray outline-none w-full"
               />
             </div>
             <div className="space-y-2 flex flex-col">
@@ -32,7 +32,7 @@ const CreateIdea = () => {
               </label>
               <input
                 type="text"
-                className="px-3 py-2 md:py-3 rounded-md border-2 border-gray outline-none w-full"
+                className="px-3 py-2 md:py-3 rounded-md border border-gray outline-none w-full"
               />
             </div>
           </div>
@@ -43,7 +43,7 @@ const CreateIdea = () => {
               </label>
               <input
                 type="text"
-                className="px-3 py-2 md:py-3 rounded-md border-2 border-gray outline-none w-full"
+                className="px-3 py-2 md:py-3 rounded-md border border-gray outline-none w-full"
               />
             </div>
             <div className="space-y-2 flex flex-col">
@@ -52,7 +52,7 @@ const CreateIdea = () => {
               </label>
               <input
                 type="text"
-                className="px-3 py-2 md:py-3 rounded-md border-2 border-gray outline-none w-full"
+                className="px-3 py-2 md:py-3 rounded-md border border-gray outline-none w-full"
               />
             </div>
           </div>
@@ -68,7 +68,7 @@ const CreateIdea = () => {
               <h3 className="text-sm font-medium">Add attachments</h3>
             </div>
           </div>
-          <div className="border-2 border-gray rounded-md px-3 py-4 flex flex-col md:flex-row md:items-center space-y-2 md:space-x-4">
+          <div className="border border-gray rounded-md px-3 py-4 flex flex-col md:flex-row md:items-center space-y-2 md:space-x-4">
             <h2 className="text-sm font-medium ">Required information</h2>
             <div className="space-x-3 flex">
               <h3 className="text-xs text-white bg-red px-3 py-1 rounded-md font-medium">
