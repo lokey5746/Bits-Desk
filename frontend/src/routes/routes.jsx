@@ -10,6 +10,7 @@ import CreateIncident from "../screen/incident/CreateIncident";
 import CreateIdea from "../screen/idea/CreateIdea";
 import Profile from "../screen/user/Profile";
 import Dashboard from "../screen/layout/Dashboard";
+import Project from "../screen/project/Project";
 
 const router = createBrowserRouter([
   {
@@ -44,6 +45,10 @@ const router = createBrowserRouter([
           {
             path: "createidea",
             element: <CreateIdea />,
+          },
+          {
+            path: "projectidea",
+            element: <Project />,
           },
           {
             path: "profile",
