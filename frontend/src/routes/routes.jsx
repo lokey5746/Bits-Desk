@@ -11,6 +11,8 @@ import CreateIdea from "../screen/idea/CreateIdea";
 import Profile from "../screen/user/Profile";
 import Dashboard from "../screen/layout/Dashboard";
 import Project from "../screen/project/Project";
+import About from "../screen/about/About";
+import Contact from "../screen/Contact/Contact";
 
 const router = createBrowserRouter([
   {
@@ -29,6 +31,14 @@ const router = createBrowserRouter([
       {
         path: "signin",
         element: <SignIn />,
+      },
+      {
+        path: "about",
+        element: <About />,
+      },
+      {
+        path: "contact",
+        element: <Contact />,
       },
       {
         path: "dashboard",

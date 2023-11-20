@@ -17,10 +17,10 @@ const Landing = () => {
               <Link to="/signin">Blog</Link>
             </li>
             <li>
-              <Link to="/signin">About Us</Link>
+              <Link to="/about">About Us</Link>
             </li>
             <li>
-              <Link to="/signin">Contact Us</Link>
+              <Link to="/contact">Contact Us</Link>
             </li>
           </ul>
         </div>
